@@ -2,6 +2,8 @@ package com.synerzip.presales.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,11 +30,13 @@ public class ProspectController {
 	private static final String ERROR_FIELD = "error";
 	
 	@RequestMapping(value = { "/prospect/create" }, method = { RequestMethod.POST }, consumes = "application/json")
-	public ModelAndView createUser(@RequestBody ProspectDetailVO detail) {
+	public ModelAndView createUser(@RequestBody ProspectDetailVO detail,final HttpServletResponse response) {
 
 		boolean result;
 		try {
 			
+		response.setHeader("Access-Control-Allow-Origin", "*");
+
 		result = prospectService.saveOrUpdateProspect(detail);
 		} catch (Exception e) {
 			String sMessage = "Error creating new User. [%1$s]";
@@ -46,9 +50,11 @@ public class ProspectController {
 	}
 	
 	@RequestMapping(value = { "/prospect/fetchProspects/{userId}" }, method = { RequestMethod.POST }, consumes = "application/json")
-	public ModelAndView fetchAllProspectsForSalesPerson(@PathVariable("userId") Long userId) {
+	public ModelAndView fetchAllProspectsForSalesPerson(@PathVariable("userId") Long userId,final HttpServletResponse response) {
 
 		List<ProspectDetailVO> prospectList = null;
+		response.setHeader("Access-Control-Allow-Origin", "*");
+
 		try {
 			prospectList = prospectService.fetchProspectsForSalesPerson(userId);
 		} catch (Exception e) {
@@ -59,7 +65,9 @@ public class ProspectController {
 		/**
 		 * Return the view
 		 */
+		
 		return new ModelAndView(jsonView_i, DATA_FIELD, prospectList);
+		
 	}
 	public ProspectService getProspectService() {
 		return prospectService;
