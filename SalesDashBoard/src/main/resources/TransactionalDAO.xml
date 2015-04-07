@@ -12,4 +12,11 @@
 		</property>
 	</bean>
 	
+	<bean id="masterDataDAO"
+		class="com.synerzip.presales.masterdata.dao.impl.MasterDataHibernateDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
 </beans>

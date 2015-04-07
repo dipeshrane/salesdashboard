@@ -12,7 +12,8 @@
 
 	<aop:config>
 		<aop:pointcut
-			expression="execution(public * com.synerzip.presales.prospect.service.impl.ProspectServiceImpl.*(..))"
+			expression="execution(public * com.synerzip.presales.prospect.service.impl.ProspectServiceImpl.*(..))
+			|| execution(public * com.synerzip.presales.masterdata.service.impl.MasterDataServiceImpl.*(..))"
 			id="defaultAdminServicePointCut" />
 		<aop:advisor advice-ref="defaultTxAdvice" order="999"
 			pointcut-ref="defaultAdminServicePointCut" />
@@ -24,6 +25,14 @@
 		class="com.synerzip.presales.prospect.service.impl.ProspectServiceImpl">
 		<property name="prospectDAO">
 			<ref bean="prospectDAO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="masterDataService"
+		class="com.synerzip.presales.masterdata.service.impl.MasterDataServiceImpl">
+		<property name="masterDataDAO">
+			<ref bean="masterDataDAO" />
 		</property>
 	</bean>
 	

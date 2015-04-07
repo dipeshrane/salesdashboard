@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 import com.synerzip.presales.commons.exception.SalesDashboardException;
-import com.synerzip.presales.commons.model.Lookups;
 import com.synerzip.presales.commons.vo.LookupVO;
+import com.synerzip.presales.masterdata.model.Lookups;
 import com.synerzip.presales.prospect.dao.ProspectDAO;
 import com.synerzip.presales.prospect.model.ProspectDetail;
 import com.synerzip.presales.prospect.model.ProspectTeamMix;

@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.Cascade;
 
 import com.google.gson.annotations.Expose;
-import com.synerzip.presales.commons.model.Lookups;
+import com.synerzip.presales.masterdata.model.Lookups;
 
 @Entity
 @Table(name = "prospect_details")
